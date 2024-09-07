@@ -7,11 +7,11 @@ const SongDetails = () => {
   const songId = Number(id);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center text-xl">Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className="text-center text-red-500">{error}</div>;
   }
 
   const song = songs.find((song) => song.id === songId);
@@ -22,9 +22,13 @@ const SongDetails = () => {
 
   return (
     <div>
-      <h1>{song.title}</h1>
-      <h2>By {song.artist}</h2>
-      <p>{song.lyrics}</p>
+      <h1 className="text-3xl font-bold mb-4">{song.title}</h1>
+      <h2 className="text-xl font-semibold text-gray-600 mb-6">
+        By {song.artist}
+      </h2>
+      <pre className="whitespace-pre-wrap bg-gray-100 p-4 rounded-lg shadow">
+        {song.lyrics}
+      </pre>
     </div>
   );
 };
